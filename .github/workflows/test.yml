@@ -13,6 +13,7 @@ jobs:
         with:
           java-version: '11'
           distribution: 'zulu'
+          cache: 'maven'
 
       - name: Test with Maven
         run: mvn clean test
