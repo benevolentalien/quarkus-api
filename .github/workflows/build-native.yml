@@ -37,5 +37,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: api-gateway-${{ steps.project.outputs.version }}
-          path: target/api-gateway-${{ steps.project.outputs.version }}-native-image-source-jar/api-gateway-${{ steps.project.outputs.version }}-runner
+          path: target/api-gateway-${{ steps.project.outputs.version }}-runner
           retention-days: 5
