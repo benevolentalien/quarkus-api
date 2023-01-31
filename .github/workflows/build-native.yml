@@ -1,0 +1,31 @@
+name: build-native
+
+on:
+  repository_dispatch:
+    types: [trigger-build]
+
+jobs:
+  build-native:
+    runs-on: ubuntu-latest
+    env:
+      OS: linux
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.client_payload.sha }}
+
+      - name: Setup GraalVM
+        uses: graalvm/setup-graalvm@v1
+        with:
+          version: '22.2.0'
+          java-version: '11'
+          components: 'native-image'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          cache: 'maven'
+
+      - name: Set version
+        run: ./mvnw versions:set -DnewVersion="${{ github.event.release.tag_name }}"
+
+      - name: Build native executable
+        run: ./mvnw package -Dnative
+

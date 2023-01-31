@@ -13,5 +13,15 @@ jobs:
         with:
           java-version: '11'
           distribution: 'zulu'
+          
       - name: Test with Maven
         run: mvn clean test
+
+      - name: Trigger next workflow
+        if: success()
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.REPO_GHA_PAT }}
+          repository: ${{ github.repository }}
+          event-type: trigger-build
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
