@@ -29,3 +29,13 @@ jobs:
       - name: Build native executable
         run: ./mvnw package -Dnative
 
+      - name: Extract Maven project version
+        run: echo ::set-output name=version::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
+        id: project
+
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v3
+        with:
+          name: api-gateway-${{ steps.project.outputs.version }}
+          path: api-gateway-${{ steps.project.outputs.version }}-SNAPSHOT-native-image-source-jar/api-gateway-${{ steps.project.outputs.version }}-SNAPSHOT-runner
+          retention-days: 5
