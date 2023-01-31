@@ -1,0 +1,10 @@
+{
+  mostPopular {
+    page
+    pages
+    tvShows {
+      id
+      name
+    }
+  }
+}

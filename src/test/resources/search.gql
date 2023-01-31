@@ -1,0 +1,10 @@
+{
+  search(name: "rick") {
+    page
+    pages
+    tvShows {
+      id
+      name
+    }
+  }
+}
