@@ -39,3 +39,12 @@ jobs:
           name: api-gateway-${{ steps.project.outputs.version }}
           path: target/api-gateway-${{ steps.project.outputs.version }}-runner
           retention-days: 5
+
+      - name: Trigger next workflow
+        if: ${{ success() && !contains(steps.project.outputs.version, 'snapshot') }}
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.REPO_GHA_PAT }}
+          repository: ${{ github.repository }}
+          event-type: trigger-docker
+          client-payload: '{"ref": "${{ github.event.client_payload.ref }}", "sha": "${{ github.event.client_payload.sha }}", "version": "${{ steps.project.outputs.version }}"}'
