@@ -41,7 +41,7 @@ jobs:
           retention-days: 5
 
       - name: Trigger next workflow
-        if: success() && !contains(${{ steps.project.outputs.version }}, 'SNAPSHOT')
+        if: success() # && !contains(${{ steps.project.outputs.version }}, 'SNAPSHOT')
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.REPO_GHA_PAT }}
