@@ -6,9 +6,8 @@ on:
 
 jobs:
   publish-docker:
-    runs-on: ubuntu-latest
-    env:
-      OS: linux
+    runs-on: ubuntu-20.04
+
     steps:
       - uses: actions/checkout@v3
         with:
