@@ -40,5 +40,5 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            benevolent-alien/api-gateway:latest
-            benevolent-alien/api-gateway:${{ github.event.client_payload.version }}
+            benevolentalien/api-gateway:latest
+            benevolentalien/api-gateway:${{ github.event.client_payload.version }}
