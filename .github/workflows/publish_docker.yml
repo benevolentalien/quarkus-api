@@ -18,8 +18,7 @@ jobs:
         id: download-artifact
         uses: dawidd6/action-download-artifact@v2
         with:
-          workflow: build-native.yml
-          branch: master
+          run_id: ${{ github.event.client_payload.run_id }}
           name: api-gateway-${{ github.event.client_payload.version }}
           path: target
           if_no_artifact_found: fail

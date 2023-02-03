@@ -41,10 +41,10 @@ jobs:
           retention-days: 5
 
       - name: Trigger next workflow
-        if: success() && !contains(${{ steps.project.outputs.version }}, 'snapshot')
+        if: success() && !contains(${{ steps.project.outputs.version }}, 'SNAPSHOT')
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.REPO_GHA_PAT }}
           repository: ${{ github.repository }}
           event-type: trigger-docker
-          client-payload: '{"ref": "${{ github.event.client_payload.ref }}", "sha": "${{ github.event.client_payload.sha }}", "version": "${{ steps.project.outputs.version }}"}'
+          client-payload: '{"ref": "${{ github.event.client_payload.ref }}", "sha": "${{ github.event.client_payload.sha }}", "version": "${{ steps.project.outputs.version }}", "run_id": "${{ github.run_id }}"}'
