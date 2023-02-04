@@ -24,7 +24,7 @@ jobs:
         id: bump
         uses: nnichols/maven-version-bump-action@v3
         with:
-          github-token: ${{ secrets.github_token }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build native executable
         run: ./mvnw package -Pnative -DskipTests -Dquarkus.native.container-build=true
@@ -32,8 +32,8 @@ jobs:
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
         with:
-          name: api-gateway-${{ steps.project.outputs.version }}
-          path: target/api-gateway-${{ steps.project.outputs.version }}-runner
+          name: api-gateway-${{ steps.bump.outputs.version }}
+          path: target/api-gateway-${{ steps.bump.outputs.version }}-runner
           retention-days: 5
 
   publish:
