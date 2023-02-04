@@ -1,4 +1,4 @@
-package dev.monx.model;
+package dev.monx.episodate.model;
 
 import java.time.LocalDate;
 import java.util.Optional;

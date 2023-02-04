@@ -1,4 +1,4 @@
-package dev.monx.resource;
+package dev.monx.episodate.resource;
 
 import javax.inject.Inject;
 
@@ -6,12 +6,11 @@ import org.eclipse.microprofile.graphql.GraphQLApi;
 import org.eclipse.microprofile.graphql.Name;
 import org.eclipse.microprofile.graphql.Query;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
-import org.jboss.logging.Logger;
 
-import dev.monx.model.Pagination;
-import dev.monx.model.TvShow;
-import dev.monx.model.TvShowDetails;
-import dev.monx.service.EpisodateService;
+import dev.monx.episodate.model.Pagination;
+import dev.monx.episodate.model.TvShow;
+import dev.monx.episodate.model.TvShowDetails;
+import dev.monx.episodate.service.EpisodateService;
 
 @GraphQLApi
 public class EpisodateResource {

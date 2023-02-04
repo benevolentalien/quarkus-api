@@ -1,4 +1,4 @@
-package dev.monx.service;
+package dev.monx.episodate.service;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -8,9 +8,9 @@ import javax.ws.rs.core.MediaType;
 
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
-import dev.monx.model.Details;
-import dev.monx.model.Pagination;
-import dev.monx.model.TvShow;
+import dev.monx.episodate.model.Details;
+import dev.monx.episodate.model.Pagination;
+import dev.monx.episodate.model.TvShow;
 
 @RegisterRestClient
 public interface EpisodateService {

@@ -1,4 +1,4 @@
-package dev.monx;
+package dev.monx.episodate;
 
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
@@ -12,11 +12,11 @@ import static io.restassured.RestAssured.given;
 import java.io.IOException;
 
 @QuarkusTest
-class EpisodateDetailsTest {
+class EpisodateSearchTest {
 
     @Test
     void testHelloEndpoint() throws IOException {
-        var query = GqlTestHelpers.loadQueryAsJson("details.gql");
+        var query = GqlTestHelpers.loadQueryAsJson("search.gql");
 
         given()
                 .body(query)
@@ -24,7 +24,7 @@ class EpisodateDetailsTest {
                 .post("/graphql")
                 .then()
                 .statusCode(200)
-                .body(containsString("Fernwood 2Night"));
+                .body(containsString("Rick and Morty"));
     }
 
 }

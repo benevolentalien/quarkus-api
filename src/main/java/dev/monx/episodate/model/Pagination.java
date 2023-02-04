@@ -1,4 +1,4 @@
-package dev.monx.model;
+package dev.monx.episodate.model;
 
 import java.util.List;
 

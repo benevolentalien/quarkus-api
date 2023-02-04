@@ -1,4 +1,4 @@
-package dev.monx.model;
+package dev.monx.episodate.model;
 
 public class Details {
     private TvShowDetails tvShow;
