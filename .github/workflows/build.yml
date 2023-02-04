@@ -14,6 +14,9 @@ jobs:
   build:
     runs-on: ubuntu-20.04
 
+    outputs:
+      version: ${{ steps.project.outputs.version }}
+
     steps:
       - uses: actions/checkout@v3
         with:
@@ -50,5 +53,5 @@ jobs:
     with:
       sha: ${{ github.sha }}
       ref: ${{ github.ref }}
-      version: ${{ steps.project.outputs.version }}
+      version: ${{ needs.build.outputs.version }}
       run_id: ${{ github.run_id }}
