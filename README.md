@@ -1,3 +1,16 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=benevolentalien_quarkus-api&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=benevolentalien_quarkus-api)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=benevolentalien_quarkus-api&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=benevolentalien_quarkus-api)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=benevolentalien_quarkus-api&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=benevolentalien_quarkus-api)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=benevolentalien_quarkus-api&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=benevolentalien_quarkus-api)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=benevolentalien_quarkus-api&metric=bugs)](https://sonarcloud.io/summary/new_code?id=benevolentalien_quarkus-api)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=benevolentalien_quarkus-api&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=benevolentalien_quarkus-api)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=benevolentalien_quarkus-api&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=benevolentalien_quarkus-api)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=benevolentalien_quarkus-api&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=benevolentalien_quarkus-api)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=benevolentalien_quarkus-api&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=benevolentalien_quarkus-api)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=benevolentalien_quarkus-api&metric=coverage)](https://sonarcloud.io/summary/new_code?id=benevolentalien_quarkus-api)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=benevolentalien_quarkus-api&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=benevolentalien_quarkus-api)
+[![Java CI](https://github.com/benevolentalien/quarkus-api/actions/workflows/test.yml/badge.svg)](https://github.com/benevolentalien/quarkus-api/actions/workflows/test.yml)
+
 # episodate Project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
