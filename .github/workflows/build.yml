@@ -33,23 +33,15 @@ jobs:
         run: ./mvnw package -Pnative -DskipTests -Dquarkus.native.container-build=true
 
       - name: Extract Maven project version
-        run: echo "version=$(./mvnw -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)" >> $GITHUB_ENV
+        run: echo "version=$(./mvnw -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)" >> $GITHUB_OUTPUT
+        id: project
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
         with:
-          name: api-gateway-${{ env.version }}
-          path: target/api-gateway-${{ env.version }}-runner
+          name: api-gateway-${{ steps.project.outputs.version }}
+          path: target/api-gateway-${{ steps.project.outputs.version }}-runner
           retention-days: 5
-
-      # - name: Trigger next workflow
-      #   if: success()
-      #   uses: peter-evans/repository-dispatch@v1
-      #   with:
-      #     token: ${{ secrets.REPO_GHA_PAT }}
-      #     repository: ${{ github.repository }}
-      #     event-type: trigger-docker
-      #     client-payload: '{"ref": "${{ github.event.client_payload.ref }}", "sha": "${{ github.event.client_payload.sha }}", "version": "${{ steps.project.outputs.version }}", "run_id": "${{ github.run_id }}"}'
 
   publish:
     needs: build
@@ -58,5 +50,5 @@ jobs:
     with:
       sha: ${{ github.sha }}
       ref: ${{ github.ref }}
-      version: ${{ env.version }}
+      version: ${{ steps.project.outputs.version }}
       run_id: ${{ github.run_id }}
