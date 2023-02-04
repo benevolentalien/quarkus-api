@@ -26,9 +26,10 @@ jobs:
           ref: ${{ inputs.sha }}
 
       - name: Download artifact
-        uses: actions/download-artifact@v3.0.0
+        uses: actions/download-artifact@v3
         with:
           name: api-gateway-${{ inputs.version }}
+          path: target
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
