@@ -1,0 +1,10 @@
+mutation {
+  sendNotification(message: {
+    to: ["ExponentPushToken[xxxxxxxxxxxxxxxxxxxxxx]"]
+    body: "asdasd"
+  }){
+    status
+    message
+    id
+  }
+}
