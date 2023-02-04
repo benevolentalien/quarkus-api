@@ -3,16 +3,7 @@ name: publish
 on: 
   workflow_call:
     inputs:
-      sha:
-        required: true
-        type: string
-      ref:
-        required: true
-        type: string
       version:
-        required: true
-        type: string
-      run_id:
         required: true
         type: string
 
@@ -22,8 +13,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-        with:
-          ref: ${{ inputs.sha }}
 
       - name: Download artifact
         uses: actions/download-artifact@v3
@@ -50,3 +39,7 @@ jobs:
           tags: |
             benevolentalien/api-gateway:latest
             benevolentalien/api-gateway:${{ inputs.version }}
+
+      - uses: rickstaa/action-create-tag@v1
+        with:
+          tag: ${{ inputs.version }}

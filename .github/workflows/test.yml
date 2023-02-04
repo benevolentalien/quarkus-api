@@ -35,6 +35,3 @@ jobs:
     needs: test
     uses: ./.github/workflows/build.yml
     secrets: inherit
-    with:
-      sha: ${{ github.sha }}
-      ref: ${{ github.ref }}

@@ -2,13 +2,6 @@ name: build
 
 on: 
   workflow_call:
-    inputs:
-      sha:
-        required: true
-        type: string
-      ref:
-        required: true
-        type: string
 
 jobs:
   build:
@@ -31,7 +24,7 @@ jobs:
         id: bump
         uses: nnichols/maven-version-bump-action@v3
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.github_token }}
 
       - name: Build native executable
         run: ./mvnw package -Pnative -DskipTests -Dquarkus.native.container-build=true
@@ -48,7 +41,4 @@ jobs:
     uses: ./.github/workflows/publish.yml
     secrets: inherit
     with:
-      sha: ${{ github.sha }}
-      ref: ${{ github.ref }}
       version: ${{ needs.build.outputs.version }}
-      run_id: ${{ github.run_id }}
