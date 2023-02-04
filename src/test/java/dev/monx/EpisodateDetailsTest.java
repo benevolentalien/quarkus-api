@@ -12,10 +12,10 @@ import static io.restassured.RestAssured.given;
 import java.io.IOException;
 
 @QuarkusTest
-public class EpisodateDetailsTest {
+class EpisodateDetailsTest {
 
     @Test
-    public void testHelloEndpoint() throws IOException {
+    void testHelloEndpoint() throws IOException {
         var query = GqlTestHelpers.loadQueryAsJson("details.gql");
 
         given()
