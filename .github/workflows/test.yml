@@ -31,11 +31,10 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./mvnw -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=benevolentalien_quarkus-api -Dsonar.coverage.jacoco.xmlReportPaths=./target/jacoco-report/jacoco.xml
 
-      - name: Trigger next workflow
-        if: success()
-        uses: peter-evans/repository-dispatch@v1
-        with:
-          token: ${{ secrets.REPO_GHA_PAT }}
-          repository: ${{ github.repository }}
-          event-type: trigger-build
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+  build:
+    needs: test
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+    with:
+      sha: ${{ github.sha }}
+      ref: ${{ github.ref }}

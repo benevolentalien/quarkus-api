@@ -1,24 +1,36 @@
-name: publish-docker
+name: publish
 
-on:
-  repository_dispatch:
-    types: [trigger-docker]
+on: 
+  workflow_call:
+    inputs:
+      sha:
+        required: true
+        type: string
+      ref:
+        required: true
+        type: string
+      version:
+        required: true
+        type: string
+      run_id:
+        required: true
+        type: string
 
 jobs:
-  publish-docker:
+  publish:
     runs-on: ubuntu-20.04
 
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.client_payload.sha }}
+          ref: ${{ inputs.sha }}
 
       - name: Download artifact
         id: download-artifact
         uses: dawidd6/action-download-artifact@v2
         with:
-          run_id: ${{ github.event.client_payload.run_id }}
-          name: api-gateway-${{ github.event.client_payload.version }}
+          run_id: ${{ inputs.run_id }}
+          name: api-gateway-${{ inputs.version }}
           path: target
           if_no_artifact_found: fail
 
@@ -40,4 +52,4 @@ jobs:
           push: true
           tags: |
             benevolentalien/api-gateway:latest
-            benevolentalien/api-gateway:${{ github.event.client_payload.version }}
+            benevolentalien/api-gateway:${{ inputs.version }}
