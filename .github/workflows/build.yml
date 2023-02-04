@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     outputs:
-      version: ${{ steps.project.outputs.version }}
+      version: ${{ steps.bump.outputs.version }}
 
     steps:
       - uses: actions/checkout@v3
@@ -37,10 +37,6 @@ jobs:
 
       - name: Build native executable
         run: ./mvnw package -Pnative -DskipTests -Dquarkus.native.container-build=true
-
-      - name: Extract Maven project version
-        run: echo "version=$(./mvnw -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)" >> $GITHUB_OUTPUT
-        id: project
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
