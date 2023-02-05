@@ -7,6 +7,16 @@ public class Message {
 
     private String body;
 
+    private String title;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public List<String> getTo() {
         return to;
     }
