@@ -39,3 +39,12 @@ jobs:
           tags: |
             benevolentalien/api-gateway:latest
             benevolentalien/api-gateway:${{ inputs.version }}
+
+      - name: Trigger Deploy
+        if: success()
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          repository: benevolentalien/hml-api
+          event-type: deploy
+          client-payload: '{"version": "${{ inputs.version }}"}'
