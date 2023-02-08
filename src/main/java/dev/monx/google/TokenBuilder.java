@@ -15,7 +15,6 @@ import io.smallrye.jwt.build.Jwt;
 
 @ApplicationScoped
 public class TokenBuilder {
-    private final String privateKey = ConfigProvider.getConfig().getValue("FIREABASE_PRIVATE_KEY", String.class);
     private final String email = ConfigProvider.getConfig().getValue("FIREBASE_EMAIL", String.class);
     private final String apiKey = ConfigProvider.getConfig().getValue("FIREBASE_API_KEY", String.class);
 
