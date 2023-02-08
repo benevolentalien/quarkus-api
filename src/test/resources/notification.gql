@@ -1,6 +1,5 @@
 mutation {
   sendNotification(message: {
-    to: ["ExponentPushToken[xxxxxxxxxxxxxxxxxxxxxx]"]
     body: "asdasd"
     title: "asd"
   }){

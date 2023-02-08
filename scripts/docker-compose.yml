@@ -13,18 +13,37 @@ services:
     networks:
       - my-network
     depends_on:
-      - jaeger
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/notificator
     
-  jaeger:
-    image: jaegertracing/all-in-one:1
-    ports:
-      - "6831:6831/udp"
-      - "16686:16686"
+  postgres:
+    image: postgres:bullseye
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: notificator
+    volumes:
+      - db-data:/var/lib/postgresql/data
     networks:
       - my-network
+      - intern
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8000:8080
+    depends_on:
+      - postgres
+    networks:
+      - intern
 
 volumes:
   maven:
+  db-data:
 
 networks:
   my-network:
+  intern:

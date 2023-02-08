@@ -1,15 +1,14 @@
 package dev.monx.episodate;
 
-import io.quarkus.test.junit.QuarkusTest;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.containsString;
+
+import java.io.IOException;
+
 import org.junit.jupiter.api.Test;
 
 import dev.monx.helper.GqlTestHelpers;
-
-import static org.hamcrest.CoreMatchers.containsString;
-
-import static io.restassured.RestAssured.given;
-
-import java.io.IOException;
+import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
 class EpisodateSearchTest {
