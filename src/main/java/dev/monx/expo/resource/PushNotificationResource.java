@@ -42,8 +42,8 @@ public class PushNotificationResource {
 
         var toSend = new Message();
 
-        toSend.setBody(message.body);
-        toSend.setTitle(message.title);
+        toSend.setBody(message.getBody());
+        toSend.setTitle(message.getTitle());
 
         var user = User.findByUid(sub).await().atMost(Duration.ofSeconds(3));
 

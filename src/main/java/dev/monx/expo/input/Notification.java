@@ -2,8 +2,11 @@ package dev.monx.expo.input;
 
 import org.eclipse.microprofile.graphql.Input;
 
+import lombok.Data;
+
 @Input
+@Data
 public class Notification {
-    public String title;
-    public String body;
+    private String title;
+    private String body;
 }
