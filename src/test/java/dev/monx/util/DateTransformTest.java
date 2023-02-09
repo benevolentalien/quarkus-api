@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
-public class DateTransformTest {
+class DateTransformTest {
     @Test
-    public void testConvertToLocalDate_WithValidDateString_ReturnsExpectedLocalDate() {
+    void testConvertToLocalDate_WithValidDateString_ReturnsExpectedLocalDate() {
         Optional<String> dateString1 = Optional.of("2012-10-10");
         LocalDate expectedResult1 = LocalDate.of(2012, 10, 10);
         assertEquals(expectedResult1, DateTransform.convertToLocalDate(dateString1));
@@ -32,13 +32,13 @@ public class DateTransformTest {
     }
 
     @Test
-    public void testConvertToLocalDate_WithInvalidDateString_ReturnsNull() {
+    void testConvertToLocalDate_WithInvalidDateString_ReturnsNull() {
         Optional<String> dateString = Optional.of("invalid date string");
         assertNull(DateTransform.convertToLocalDate(dateString));
     }
 
     @Test
-    public void testConvertToLocalDate_WithEmptyDateString_ReturnsNull() {
+    void testConvertToLocalDate_WithEmptyDateString_ReturnsNull() {
         Optional<String> dateString = Optional.empty();
         assertNull(DateTransform.convertToLocalDate(dateString));
     }

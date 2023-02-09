@@ -11,7 +11,6 @@ import org.eclipse.microprofile.graphql.Mutation;
 import org.eclipse.microprofile.graphql.Query;
 import org.eclipse.microprofile.jwt.Claim;
 import org.eclipse.microprofile.jwt.Claims;
-import org.jboss.logging.Logger;
 
 import dev.monx.user.input.NewUser;
 import dev.monx.user.model.User;
@@ -24,8 +23,6 @@ public class UserResource {
     @Inject
     @Claim(standard = Claims.sub)
     String uid;
-
-    private final Logger logger = Logger.getLogger(UserResource.class);
 
     @Mutation("register")
     @RolesAllowed("USER")
