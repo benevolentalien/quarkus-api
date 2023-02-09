@@ -18,7 +18,14 @@ jobs:
         with:
           java-version: '11'
           distribution: 'zulu'
-          cache: 'maven'
+          # cache: 'maven'
+
+      - uses: actions/cache@v1
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
 
       - name: Bump Version
         id: bump
