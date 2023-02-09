@@ -31,7 +31,6 @@ public class TokenBuilder {
                 .claim(Claims.iat, now)
                 .claim(Claims.exp, now + 60 * 60)
                 .claim("uid", uid)
-                .claim("roles", Arrays.asList(new String[] { "USER" }))
                 .claim(Claims.aud,
                         "https://identitytoolkit.googleapis.com/google.identity.identitytoolkit.v1.IdentityToolkit")
                 .jws()

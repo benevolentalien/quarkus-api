@@ -32,8 +32,8 @@ public class UserResource {
         user.uid = uid;
         user.followers = Set.of();
         user.following = Set.of();
-        user.token = newUser.token;
-        user.username = newUser.username;
+        user.token = newUser.getToken();
+        user.username = newUser.getUsername();
 
         return user.persist();
     }

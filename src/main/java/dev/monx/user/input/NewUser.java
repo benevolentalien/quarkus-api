@@ -2,8 +2,11 @@ package dev.monx.user.input;
 
 import org.eclipse.microprofile.graphql.Input;
 
+import lombok.Data;
+
 @Input
+@Data
 public class NewUser {
-    public String username;
-    public String token;
+    private String username;
+    private String token;
 }
