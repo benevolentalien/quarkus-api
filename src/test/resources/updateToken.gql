@@ -1,0 +1,5 @@
+mutation {
+    updateToken(token: "newToken") {
+        token
+    }
+}

@@ -3,6 +3,7 @@ package dev.monx.user.resource;
 import java.util.Set;
 
 import javax.annotation.security.RolesAllowed;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 
 import org.eclipse.microprofile.graphql.GraphQLApi;
@@ -18,6 +19,7 @@ import io.quarkus.hibernate.reactive.panache.common.runtime.ReactiveTransactiona
 import io.smallrye.mutiny.Uni;
 
 @GraphQLApi
+@RequestScoped
 public class UserResource {
     @Inject
     @Claim(standard = Claims.sub)
@@ -29,8 +31,6 @@ public class UserResource {
     @RolesAllowed("USER")
     @ReactiveTransactional
     public Uni<User> sendNotification(NewUser newUser) {
-        logger.info(uid);
-
         var user = new User();
         user.uid = uid;
         user.followers = Set.of();

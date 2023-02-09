@@ -1,9 +1,15 @@
 package dev.monx.util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
+import java.util.Date;
 import java.util.Optional;
 
 // codigo do CHATGPT!!!
@@ -18,6 +24,12 @@ public class DateTransform {
         DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
     };
 
+    private static LocalDate convertToLocalDate(Date date) {
+        Instant instant = date.toInstant();
+        ZoneId systemDefault = ZoneId.systemDefault();
+        return instant.atZone(systemDefault).toLocalDate();
+    }
+
     public static LocalDate convertToLocalDate(Optional<String> dateString) {
         if (!dateString.isPresent()) {
             return null;
@@ -29,11 +41,18 @@ public class DateTransform {
             return LocalDate.of(Integer.parseInt(input), 1, 1);
         }
 
+        if (input.matches("\\w{3}/\\d{4}")) {
+            SimpleDateFormat format = new SimpleDateFormat("MMM/yyyy");
+            try {
+                return convertToLocalDate(format.parse(input));
+            } catch (ParseException e) {
+            }
+        }
+
         for (DateTimeFormatter formatter : formatters) {
             try {
                 return LocalDate.parse(input, formatter);
             } catch (DateTimeParseException e) {
-                continue;
             }
         }
         return null;

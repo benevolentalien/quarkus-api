@@ -1,0 +1,10 @@
+mutation {
+    register (newUser: {
+        username: "teste"
+        token: "mytoken"
+    }) {
+        id
+        token
+        username
+    }
+}

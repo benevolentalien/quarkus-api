@@ -1,1 +1,1 @@
-schema: 'http://localhost:8080/graphql/schema.graphql'
+schema: 'https://cool-field-4473.fly.dev/graphql/schema.graphql'

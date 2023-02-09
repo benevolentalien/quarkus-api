@@ -53,7 +53,7 @@ public class User extends PanacheEntity {
 
     public static Uni<User> unfollow(String uid, Long id) {
         return findByUid(uid).invoke(user -> {
-            user.following = user.following.stream().filter(u -> u.id != id).collect(Collectors.toSet());
+            user.following = user.following.stream().filter(u -> !u.id.equals(id)).collect(Collectors.toSet());
         });
     }
 

@@ -1,0 +1,5 @@
+mutation {
+    unfollow(id: 100) {
+        uid
+    }
+}

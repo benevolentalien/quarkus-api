@@ -1,0 +1,7 @@
+mutation {
+    follow(id: 300) {
+        following {
+            id
+        }
+    }
+}

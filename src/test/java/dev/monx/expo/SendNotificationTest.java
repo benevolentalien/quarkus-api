@@ -17,9 +17,9 @@ import io.quarkus.test.junit.QuarkusTest;
 class SendNotificationTest {
     @Inject
     TokenBuilder tokenBuilder;
-    
+
     @Test
-    void testHelloEndpoint() throws IOException {
+    void testSendNotification() throws IOException {
         var query = GqlTestHelpers.loadQueryAsJson("notification.gql");
 
         var token = tokenBuilder.getToken("123");
