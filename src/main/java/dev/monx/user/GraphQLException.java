@@ -1,5 +1,6 @@
 package dev.monx.user;
 
+import java.util.Collections;
 import java.util.List;
 
 import graphql.ErrorClassification;
@@ -8,7 +9,7 @@ import graphql.language.SourceLocation;
 
 public class GraphQLException extends RuntimeException implements GraphQLError {
 
-    private ExceptionsEnum exception;
+    private final ExceptionsEnum exception;
 
     public GraphQLException (ExceptionsEnum exception) {
         this.exception = exception;
@@ -26,7 +27,7 @@ public class GraphQLException extends RuntimeException implements GraphQLError {
 
     @Override
     public List<SourceLocation> getLocations() {
-        return null;
+        return Collections.emptyList();
     }
     
 }
