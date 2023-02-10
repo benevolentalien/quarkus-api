@@ -1,5 +1,6 @@
 package dev.monx.user.resource;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.security.RolesAllowed;
@@ -63,5 +64,13 @@ public class UserResource {
     @RolesAllowed("USER")
     public Uni<User> me() {
         return User.findByUid(uid);
+    }
+
+    @Query
+    @RolesAllowed("USER")
+    public Uni<List<User>> search(String username) throws Exception {
+        if (username.isBlank()) throw new Exception();
+        
+        return User.list("lower(username) LIKE ?1", username.toLowerCase() + "%");
     }
 }

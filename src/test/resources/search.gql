@@ -1,10 +1,5 @@
 {
-  search(name: "rick") {
-    page
-    pages
-    tvShows {
-      id
-      name
-    }
+  search(username: "test2") {
+    id
   }
 }
