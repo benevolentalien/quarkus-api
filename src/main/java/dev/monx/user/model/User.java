@@ -1,5 +1,6 @@
 package dev.monx.user.model;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -53,6 +54,10 @@ public class User extends PanacheEntity {
 
     public static Uni<User> unfollow(String uid, Long id) {
         return findByUid(uid).invoke(user -> user.following = user.following.stream().filter(u -> !u.id.equals(id)).collect(Collectors.toSet()));
+    }
+
+    public static Uni<List<User>> searchByUsername (String username) {
+        return list("lower(username) LIKE ?1", username.toLowerCase() + "%");
     }
 
 }

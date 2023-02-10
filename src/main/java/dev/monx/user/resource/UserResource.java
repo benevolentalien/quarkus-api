@@ -13,9 +13,12 @@ import org.eclipse.microprofile.graphql.Query;
 import org.eclipse.microprofile.jwt.Claim;
 import org.eclipse.microprofile.jwt.Claims;
 
+import dev.monx.user.ExceptionsEnum;
+import dev.monx.user.GraphQLException;
 import dev.monx.user.input.NewUser;
 import dev.monx.user.model.User;
 import io.quarkus.hibernate.reactive.panache.common.runtime.ReactiveTransactional;
+import io.smallrye.common.constraint.NotNull;
 import io.smallrye.mutiny.Uni;
 
 @GraphQLApi
@@ -68,9 +71,9 @@ public class UserResource {
 
     @Query
     @RolesAllowed("USER")
-    public Uni<List<User>> search(String username) throws Exception {
-        if (username.isBlank()) throw new Exception();
+    public Uni<List<User>> search(@NotNull String username) throws GraphQLException {
+        if (username.isBlank()) throw new GraphQLException(ExceptionsEnum.EMPTY_STRING);
         
-        return User.list("lower(username) LIKE ?1", username.toLowerCase() + "%");
+        return User.searchByUsername(username);
     }
 }

@@ -52,7 +52,7 @@ class SearchUserTest {
         .post("/graphql")
         .then()
         .statusCode(200)
-        .body(containsString("DataFetchingException"));
+        .body(containsString("String cannot be null"));
 
     }
 }
