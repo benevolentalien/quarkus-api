@@ -1,7 +1,6 @@
 package dev.monx.google;
 
 import java.time.ZonedDateTime;
-import java.util.Arrays;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
