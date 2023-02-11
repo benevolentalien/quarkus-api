@@ -1,5 +1,0 @@
-{
-  search(username: "test2") {
-    id
-  }
-}

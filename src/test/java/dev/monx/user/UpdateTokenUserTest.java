@@ -4,6 +4,8 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.containsString;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -20,17 +22,19 @@ class UpdateTokenUserTest {
 
     @Test
     void testUpdateTokenUser() throws IOException {
-        var query = GqlTestHelpers.loadQueryAsJson("updateToken.gql");
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("token", "newToken");
+        var query = GqlTestHelpers.loadQueryAsJson("updateToken.gql", variables);
         var token = tokenBuilder.getToken("123");
 
         given()
-        .body(query)
-        .header("authorization", token)
-        .when()
-        .post("/graphql")
-        .then()
-        .statusCode(200)
-        .body(containsString("newToken"));
+                .body(query)
+                .header("authorization", token)
+                .when()
+                .post("/graphql")
+                .then()
+                .statusCode(200)
+                .body(containsString("newToken"));
 
     }
 }

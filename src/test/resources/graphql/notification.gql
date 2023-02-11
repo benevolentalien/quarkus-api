@@ -1,0 +1,7 @@
+mutation Notification($message: NotificationInput!) {
+  sendNotification(message: $message) {
+    status
+    message
+    id
+  }
+}

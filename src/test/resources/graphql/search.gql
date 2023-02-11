@@ -1,0 +1,5 @@
+query Search($username: String!) {
+  search(username: $username) {
+    id
+  }
+}

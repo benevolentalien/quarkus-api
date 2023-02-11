@@ -24,13 +24,13 @@ class MeUserTest {
         var token = tokenBuilder.getToken("123");
 
         given()
-        .body(query)
-        .header("authorization", token)
-        .when()
-        .post("/graphql")
-        .then()
-        .statusCode(200)
-        .body(containsString("test"));
+                .body(query)
+                .header("authorization", token)
+                .when()
+                .post("/graphql")
+                .then()
+                .statusCode(200)
+                .body(containsString("test"));
 
     }
 }

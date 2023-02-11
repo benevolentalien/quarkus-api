@@ -4,6 +4,8 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.containsString;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -20,17 +22,19 @@ class UnfollowUserTest {
 
     @Test
     void testUnfollowUser() throws IOException {
-        var query = GqlTestHelpers.loadQueryAsJson("unfollow.gql");
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("id", 100);
+        var query = GqlTestHelpers.loadQueryAsJson("unfollow.gql", variables);
         var token = tokenBuilder.getToken("1234");
 
         given()
-        .body(query)
-        .header("authorization", token)
-        .when()
-        .post("/graphql")
-        .then()
-        .statusCode(200)
-        .body(containsString("1234"));
+                .body(query)
+                .header("authorization", token)
+                .when()
+                .post("/graphql")
+                .then()
+                .statusCode(200)
+                .body(containsString("1234"));
 
     }
 }

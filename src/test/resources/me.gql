@@ -1,6 +1,0 @@
-query {
-    me {
-        id
-        username
-    }
-}

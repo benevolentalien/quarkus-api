@@ -1,0 +1,7 @@
+mutation Follow($id: BigInteger!) {
+  follow(id: $id) {
+    following {
+      id
+    }
+  }
+}

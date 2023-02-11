@@ -4,11 +4,14 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.containsString;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.junit.jupiter.api.Test;
 
+import dev.monx.expo.input.Notification;
 import dev.monx.google.TokenBuilder;
 import dev.monx.helper.GqlTestHelpers;
 import io.quarkus.test.junit.QuarkusTest;
@@ -20,7 +23,10 @@ class SendNotificationTest {
 
     @Test
     void testSendNotification() throws IOException {
-        var query = GqlTestHelpers.loadQueryAsJson("notification.gql");
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("message", new Notification("title", "body"));
+
+        var query = GqlTestHelpers.loadQueryAsJson("notification.gql", variables);
 
         var token = tokenBuilder.getToken("123");
 
