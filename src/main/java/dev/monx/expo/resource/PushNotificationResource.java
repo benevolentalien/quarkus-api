@@ -13,6 +13,7 @@ import org.eclipse.microprofile.graphql.Mutation;
 import org.eclipse.microprofile.jwt.Claim;
 import org.eclipse.microprofile.jwt.Claims;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
+import org.jboss.logging.Logger;
 
 import dev.monx.expo.input.Notification;
 import dev.monx.expo.model.Message;
@@ -32,11 +33,12 @@ public class PushNotificationResource {
     @Claim(standard = Claims.sub)
     String sub;
 
-    // private final Logger logger = Logger.getLogger(PushNotificationResource.class);
+    private final Logger logger = Logger.getLogger(PushNotificationResource.class);
 
     @Mutation("sendNotification")
     @RolesAllowed("USER")
     public List<NotificationResponse> sendNotification(Notification message) {
+        logger.info(sub);
         var toSend = new Message();
 
         toSend.setBody(message.getBody());
