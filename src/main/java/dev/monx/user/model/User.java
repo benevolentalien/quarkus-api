@@ -60,4 +60,8 @@ public class User extends PanacheEntity {
         return list("lower(username) LIKE ?1", username.toLowerCase() + "%");
     }
 
+    public int getFollowersCount() {
+        return this.followers.size();
+    }
+
 }
