@@ -24,7 +24,7 @@ class SendNotificationTest {
     @Test
     void testSendNotification() throws IOException {
         Map<String, Object> variables = new HashMap<>();
-        variables.put("message", new Notification("title", "body"));
+        variables.put("message", new Notification("body"));
 
         var query = GqlTestHelpers.loadQueryAsJson("notification.gql", variables);
 
